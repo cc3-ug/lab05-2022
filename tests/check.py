@@ -1,7 +1,8 @@
+import utils
 from subprocess import run
 from subprocess import PIPE
 from xml.dom import minidom
-from tabulate import tabulate
+#from tabulate import tabulate
 
 
 # executes a shell command
@@ -133,11 +134,12 @@ def lab5_logisim():
     grade += ex2_result[0]
     grade += ex3_result[0]
     grade = min(grade, 100)
-    report = create_report(table)
+
+    report = utils.report(table)
+    print(report)
     if errors != '':
         report += '\n\nMore Info:\n\n' + errors
-    print(report)
-    print('\n=> Score: %d/100' % grade)
+    return utils.write_result(grade, report)
 
 
 if __name__ == '__main__':
