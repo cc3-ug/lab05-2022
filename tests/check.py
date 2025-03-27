@@ -5,7 +5,7 @@ from tabulate import tabulate
 
 
 # executes a shell command
-def execute(cmd=[], shell=False, timeout=10):
+def execute(cmd=[], shell=False, timeout=15):
     return run(cmd, shell=shell, stdout=PIPE, stderr=PIPE, timeout=timeout)
 
 
@@ -30,7 +30,7 @@ def check_ex0():
     output = task.stdout.decode().strip()
     expected = read('tests/expected/ex0')
     if output == expected:
-        return (25, 'passed', '')
+        return (10, 'passed', '')
     else:
         return (0, 'failed', '')
 
@@ -74,7 +74,7 @@ def check_ex1():
     grade = 0
     for i, (o, e) in enumerate(zip(output, expected)):
         if o == e:
-            grade += 5
+            grade += 6
         else:
             wrong.append(lookup[i])
     if len(wrong) == 0:
@@ -93,7 +93,7 @@ def check_ex2():
     output = task.stdout.decode().strip()
     expected = read('tests/expected/ex2')
     if output == expected:
-        return (25, 'passed', '')
+        return (30, 'passed', '')
     else:
         return (0, 'failed', '')
 
@@ -106,7 +106,7 @@ def check_ex3():
     output = task.stdout.decode().strip()
     expected = read('tests/expected/ex3')
     if output == expected:
-        return (25, 'passed', '')
+        return (30, 'passed', '')
     else:
         return (0, 'failed', '')
 
@@ -118,10 +118,10 @@ def lab5_logisim():
     ex2_result = check_ex2()
     ex3_result = check_ex3()
     table = []
-    table.append(('0. The basics (Warm-Up)', *ex0_result[0: 2]))
-    table.append(('1. Sub-Circuits', *ex1_result[0: 2]))
-    table.append(('2. Storing State', *ex2_result[0: 2]))
-    table.append(('3. FSMs to Digital Logic', *ex3_result[0: 2]))
+    table.append(('0. Intro', *ex0_result[0: 2]))
+    table.append(('1. Sub-circuitos', *ex1_result[0: 2]))
+    table.append(('2. Estado', *ex2_result[0: 2]))
+    table.append(('3. Automatas', *ex3_result[0: 2]))
     errors = ex0_result[2]
     errors += '\n' + ex1_result[2]
     errors += '\n' + ex2_result[2]
